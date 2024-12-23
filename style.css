@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(to right, #ff0080, #00c8ff); /* Vibrant body gradient */
+}
+.buttons {
+    margin: 50px;
+}
+.buttons button {
+    background: #222; /* Dark background for buttons for contrast */
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 120px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+}
+#toastBox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+.toast {
+    width: 400px;
+    height: 80px;
+    /* Gradient background for toast, different from the body */
+    background: linear-gradient(to right, #24C6DC, #514A9D);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    position: relative;
+    transform: translateX(100%);
+    animation: moveleft 0.5s linear forwards, fadeOut 6s ease-out forwards;
+    opacity: 1; /* Start fully visible */
+}
+@keyframes moveleft {
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; } /* Fades out completely */
+}
+.toast i {
+    margin: 0 20px;
+    font-size: 35px;
+    color: #FFF; /* White icons for visibility on gradient */
+}
+.toast.error i {
+    color: red;
+}
+.toast.invalid i {
+    color: orange;
+}
+.toast::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: #add8e6; /* Light blue progress bar */
+    animation: progress 5s linear forwards;
+}
+@keyframes progress {
+    100% {
+        width: 0;
+    }
+}
+.toast.error::after {
+    background: red;
+}
+.toast.invalid::after {
+    background: orange;
+}
